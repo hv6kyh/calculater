@@ -15,6 +15,9 @@ public class FeeController {
 
     @PostMapping("/fee")
     public ResponsePriceDto calculateFee(@RequestBody RequestPriceDto dto) throws Exception {
+        if (dto.getPrice() < 1000 || dto.getPrice() > 999999) {
+            throw new Exception("유효한 범위의 금액을 입력해주세요.");
+        }
         Money finalMoney = this.calculateFeeService.calculateFee(new Money(dto.getPrice()));
         ResponsePriceDto response = new ResponsePriceDto();
         response.setPrice(finalMoney.getAmount());

@@ -19,7 +19,7 @@ public class Policy {
     }
 
     public Money calculate(Money money) {
-        if (this.rule.equals("absolute")) {
+        if (this.rule == Rule.ABSOLUTE) {
             return new Money(this.appliedAmount);
         }
 
