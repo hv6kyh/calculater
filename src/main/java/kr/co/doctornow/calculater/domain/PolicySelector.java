@@ -15,14 +15,14 @@ public class PolicySelector {
         policy1.setRule("absolute");
         policy1.setMinimumAmount(new Money(0));
         policy1.setMaximumAmount(new Money(10000));
-        policy1.setAaa(1000);
+        policy1.setAppliedAmount(1000);
 
         Policy policy2 = new Policy();
         policy2.setId(1);
         policy2.setRule("percent");
         policy2.setMinimumAmount(new Money(10000));
         policy2.setMaximumAmount(new Money(99999));
-        policy2.setAaa(0.1);
+        policy2.setAppliedAmount(0.1);
 
         this.policies.add(policy1);
         this.policies.add(policy2);
