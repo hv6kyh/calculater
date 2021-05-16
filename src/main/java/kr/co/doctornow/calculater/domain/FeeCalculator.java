@@ -1,10 +1,18 @@
 package kr.co.doctornow.calculater.domain;
 
 import kr.co.doctornow.calculater.application.Money;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class FeeCalculator {
 
-    private PolicySelector policySelector = new PolicySelector();
+    private PolicySelector policySelector;
+
+    @Autowired
+    public FeeCalculator(PolicySelector policySelector) {
+        this.policySelector = policySelector;
+    }
 
     public Money calculateFee(Money money) throws Exception {
         Policy policy = this.policySelector.selectPolicy(money);

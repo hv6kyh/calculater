@@ -1,14 +1,18 @@
 package kr.co.doctornow.calculater.domain;
 
 import kr.co.doctornow.calculater.application.Money;
-import kr.co.doctornow.calculater.infrastructure.PolicyMockRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-
+@Service
 public class PolicySelector {
 
-    private PolicyRepository policyRepository = new PolicyMockRepository();
+    private PolicyRepository policyRepository;
+
+    @Autowired
+    public PolicySelector(PolicyRepository policyRepository) {
+        this.policyRepository = policyRepository;
+    }
 
      public Policy selectPolicy(Money money) {
          for (Policy policy : this.policyRepository.findAll()) {
